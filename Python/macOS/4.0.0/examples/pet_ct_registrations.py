@@ -28,11 +28,11 @@ def orThrow(c, e=e):
 orThrow(e.loginToGrid(DB_USER, DB_PASS, DB_IP, DB_PORT, DB_NAME))
 atexit.register(e.logout) # ensure we log out when the script ends
 
-orThrow(e.loadPatient(PATIENT_ID))
+orThrow(e.loadPatientByPatientId(PATIENT_ID))
 print('Loaded patient: {}'.format(PATIENT_ID))
-orThrow(e.loadPrimaryVolume(PRIMARY_UID))
+orThrow(e.loadPrimaryVolumeByUID(PRIMARY_UID))
 print('Loaded primary volume: {}'.format(PRIMARY_UID))
-orThrow(e.loadSecondaryVolume(SECONDARY_UID))
+orThrow(e.loadSecondaryVolumeByUID(SECONDARY_UID))
 print('Loaded secondary volume: {}'.format(SECONDARY_UID))
 
 # create registration
@@ -115,4 +115,4 @@ orThrow(regOps.performBsplineRegistration(bsplineSettings), regOps)
 print('done')
 
 # changes are just in memory, save changes to the database
-orThrow(regOps.persistChangesToDb(), regOps)
+orThrow(regOps.saveRegistration(), regOps)

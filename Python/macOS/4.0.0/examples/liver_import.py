@@ -27,7 +27,8 @@ atexit.register(e.logout) # ensure we log out when the script ends
 
 # a python function to load a patient and list the volume uids
 def loadAndListVolumes(patientId):
-  if not e.loadPatient(patientId):
+  patient = e.loadPatientByPatientId(patientId)
+  if not patient.isValid():
     print('Could not load patient id {}, error: {}'.format(patientId, e.getErrorMessage()))
   else:
     volIds = e.getPatientVolumeUIDs(patientId)

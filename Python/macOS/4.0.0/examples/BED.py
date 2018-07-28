@@ -13,6 +13,7 @@ GRID_DB = 'jakedb'
 #workstation settings
 DB_PATH = '/Velocity/Databases/vscDatabase'
 
+# requires patient 'external DR sum' already imported
 PATIENT_ID = '10052012'
 PRIMARY_UID = '1.2.840.113619.2.55.3.278435321.302.1313753121.582'
 SECONDARY_UID = '1.2.246.352.71.7.1873493392.2486330.20110829091331'
@@ -28,13 +29,13 @@ def orThrow(c, e=e):
 
 orThrow(e.loginToGrid(USER, PASS, GRID_IP, GRID_PORT, GRID_DB))
 #orThrow(e.loginToWorkstation(USER, PASS, DB_PATH, True))
-orThrow(e.loadPatient(PATIENT_ID))
+orThrow(e.loadPatientByPatientId(PATIENT_ID))
 atexit.register(e.logout)
 
 print('Loaded patient: {}'.format(PATIENT_ID))
-orThrow(e.loadPrimaryVolume(PRIMARY_UID))
+orThrow(e.loadPrimaryVolumeByUID(PRIMARY_UID))
 print('Loaded primary volume: {}'.format(PRIMARY_UID))
-orThrow(e.loadSecondaryVolume(SECONDARY_UID))
+orThrow(e.loadSecondaryVolumeByUID(SECONDARY_UID))
 print('Loaded secondary volume: {}'.format(SECONDARY_UID))
 
 # create registration if it doesn't exist

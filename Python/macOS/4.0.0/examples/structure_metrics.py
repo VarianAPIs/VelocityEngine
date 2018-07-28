@@ -29,11 +29,11 @@ def orThrow(c, e=e):
 #orThrow(e.loginToWorkstation(DB_USER, DB_PASS, DB_PATH, True))
 orThrow(e.loginToGrid(DB_USER, DB_PASS, DB_IP, DB_PORT, DB_NAME))
 atexit.register(e.logout)
-orThrow(e.loadPatient(PATIENT_ID))
+orThrow(e.loadPatientByPatientId(PATIENT_ID))
 print('Loaded patient: {}'.format(PATIENT_ID))
-orThrow(e.loadPrimaryVolume(PRIMARY_UID))
+orThrow(e.loadPrimaryVolumeByUID(PRIMARY_UID))
 print('Loaded primary volume: {}'.format(PRIMARY_UID))
-orThrow(e.loadSecondaryVolume(SECONDARY_UID))
+orThrow(e.loadSecondaryVolumeByUID(SECONDARY_UID))
 print('Loaded secondary volume: {}'.format(SECONDARY_UID))
 orThrow(e.loadRegistrationByName(REGISTRATION_NAME))
 print('Loaded registration: {}'.format(REGISTRATION_NAME))
@@ -58,6 +58,10 @@ orThrow(targetSet, sops)
 # copy the external to the new structure set
 print('Copying structure to secondary...')
 newStructures = sops.copyStructuresToSecondary([structure.getVelocityId()], targetSet.getVelocityId())
+
+# IMPORTANT: call save after finishing a set of modifications to a structure set
+targetSet = sops.saveStructureSet(targetSet.getVelocityId())
+
 orThrow(len(newStructures) == 1, sops)
 newStructureId = iter(newStructures).next()
 newStructure = newStructures[newStructureId]

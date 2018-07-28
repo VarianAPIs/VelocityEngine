@@ -1,4 +1,4 @@
-# Velocity Scripting for Python (4.0.0.792)
+# Velocity Scripting for Python (4.0.0.793)
 
 ## Installation
 
@@ -17,10 +17,10 @@ Installing setuptools, pip, wheel...done.
 
 $ source velocity-env/bin/activate
 
-(velocity-env) $ pip install velocity-4.0.0.792-cp27-cp27m-macosx_10_12_intel.whl
-Processing /Users/example/velocity-4.0.0.792-cp27-cp27m-macosx_10_12_intel.whl
+(velocity-env) $ pip install velocity-4.0.0.793-cp27-cp27m-macosx_10_12_intel.whl
+Processing /Users/example/velocity-4.0.0.793-cp27-cp27m-macosx_10_12_intel.whl
 Installing collected packages: velocity
-Successfully installed velocity-velocity-4.0.0.792
+Successfully installed velocity-velocity-4.0.0.793
 ```
 
 Windows is similar except you use `activate.bat` in the `bin` folder instead of 

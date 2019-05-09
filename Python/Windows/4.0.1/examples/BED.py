@@ -8,7 +8,7 @@ PASS = 'script'
 #grid settings
 GRID_IP = '127.0.0.1'
 GRID_PORT = 57000
-GRID_DB = 'jakedb1'
+GRID_DB = 'jakedb'
 
 #workstation settings
 DB_PATH = '/Velocity/Databases/vscDatabase'

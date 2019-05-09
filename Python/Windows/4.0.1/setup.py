@@ -33,7 +33,7 @@ class BinaryDistribution(setuptools.Distribution):
 
 setuptools.setup(
     name="velocity",
-    version="4.0.1.819",
+    version="4.0.1.820",
     description="Velocity scripting for Python",
     long_description=long_description,
     long_description_content_type="text/markdown",

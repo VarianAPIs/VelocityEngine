@@ -5,7 +5,7 @@ import atexit
 import datetime
 import math
 
-DB_NAME = r'jakedb1'
+DB_NAME = r'vscDatabase'
 DB_USER = 'script'
 DB_PASS = 'script'
 # if workstation
@@ -15,7 +15,7 @@ DB_IP = '127.0.0.1'
 DB_PORT = 57000
 
 # requires "OPT 3, CBCT adaptive" data
-IMPORT_DIR = r"C:\demodata\OPT 3, CBCT adaptive"
+IMPORT_DIR = "C:\demodata\OPT 3, CBCT adaptive"
 PATIENT_ID = "H&N 3"
 REG_NAME = 'python_registration'
 
@@ -25,8 +25,8 @@ def orThrow(c, e=e):
   if not c or (hasattr(c, 'isValid') and not c.isValid()):
     raise RuntimeError(e.getErrorMessage())
 
-#orThrow(e.loginToWorkstation(DB_USER, DB_PASS, DB_PATH, True))
-orThrow(e.loginToGrid(DB_USER, DB_PASS, DB_IP, DB_PORT, DB_NAME))
+orThrow(e.loginToWorkstation(DB_USER, DB_PASS, DB_PATH, True))
+#orThrow(e.loginToGrid(DB_USER, DB_PASS, DB_IP, DB_PORT, DB_NAME))
 atexit.register(e.logout) # ensure we log out when the script ends
 
 patient = e.loadPatientByPatientId(PATIENT_ID)

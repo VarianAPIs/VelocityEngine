@@ -5,7 +5,7 @@ import atexit
 import uuid
 import datetime
 
-DB_NAME = r'jakedb1'
+DB_NAME = r'vscDatabase'
 DB_USER = 'script'
 DB_PASS = 'script'
 # if workstation
@@ -18,8 +18,8 @@ DB_PORT = 57000
 PATIENT_ID = 'AW3Y6TA684'
 PRIMARY_UID = '1.3.12.2.1107.5.1.4.54841.30000011071412175920300003025'
 SECONDARY_UID = '1.2.246.352.61.2.4621874044879001489.17114159699319862401'
-REGISTRATION_NAME = 'deform_01'
-RIGID_NAME = "ONLINEMATCH_02"
+REGISTRATION_NAME = 'CBCT MULTI'
+RIGID_NAME = "RIGID"
 
 e = velocity.VelocityEngine()
 def orThrow(c, e=e):
@@ -46,7 +46,7 @@ secondaryVol = e.getSecondaryVolume()
 
 
 # find an external structure, throws StopIteration if not found
-primarySet = next(s for s in primaryVol.getStructureSets() if s.getName() == 'CT_1')
+primarySet = next(s for s in primaryVol.getStructureSets() if s.getName() == 'Original SIM')
 structure = next(s for s in primarySet.getStructures() if s.getName() == 'Mandible')
 print('Using structure "{}" from structure set "{}"'.format(structure.getName(), primarySet.getName()))
 

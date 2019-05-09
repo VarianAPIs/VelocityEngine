@@ -3,7 +3,7 @@ from __future__ import print_function
 import velocity
 import atexit
 
-DB_NAME = r'jakedb1'
+DB_NAME = r'vscDatabase'
 DB_USER = 'script'
 DB_PASS = 'script'
 # if workstation

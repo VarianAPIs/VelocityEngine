@@ -1248,53 +1248,12 @@
             
             </returns>
         </member>
-        <member name="M:RegistrationOperations.performManualAlignment(ManualRegistrationSettingsStructure)">
-             <summary>The function will perform a manual alignment between the two loaded volumes in
-            the persistor. It simply resets the registration matrix as it is specified
-            within the settings object.  
-            Note, this function will return an error if there is a deformation object that's
-            currently set in the persistor.  
-            All coordinates must be in Velocity's internal coordinate space. Use
-            RegistrationOperations::performManualAlignmentDICOM for DICOM coordinates.  
-              
-            
-             </summary>
-            
-             <param name="settings">
-            the alignment settings  
-            
-            </param>
-            <returns>
-            if successful  
-            
-            </returns>
-        </member>
         <member name="M:RegistrationOperations.performRigidRegistrationDICOM(RigidRegistrationSettingsStructure)">
-             <summary>Performs a rigid registration between the two loaded volumes in the engine.
+             <summary>Performs a rigid registration between the two loaded volumes in the engine.  
             Returns an error if there is no registration object or the registration is a
             deformable.  
             All coordinates and image values are in DICOM coordinates and original volume
             units.  
-              
-            
-             </summary>
-            
-             <param name="settings">
-            the registration settings  
-            
-            </param>
-            <returns>
-            if successful  
-            
-            </returns>
-        </member>
-        <member name="M:RegistrationOperations.performRigidRegistration(RigidRegistrationSettingsStructure)">
-             <summary>Performs a rigid registration between the two loaded volumes in the engine.
-            Returns an error if there is no registration object or the registration is a
-            deformable.  
-            All coordinates and image values must be in Velocity's internal coordinate space
-            and units. Use RegistrationOperations::performRigidRegistrationDICOM for DICOM
-            coordinates and original volume values.  
               
             
              </summary>
@@ -1309,9 +1268,10 @@
             </returns>
         </member>
         <member name="M:RegistrationOperations.performBsplineRegistrationDICOM(BSplineDeformableRegistrationSettingsStructure)">
-             <summary>Performs a BSpline deformable registration between the two loaded volumes.    If
-            the current registration is a deformable, it will be restarted. If the current
-            registration is not a deformable, it will be converted into one by this process.  
+             <summary>Performs a BSpline deformable registration between the two loaded volumes.  
+            If the current registration is a deformable, it will be restarted. If the
+            current registration is not a deformable, it will be converted into one by this
+            process.  
             Note, this function will restart a deformable object if such an object is
             currently loaded into memory. A value of 'true' is returned if successful.  
             All coordinates and image values are in DICOM coordinates and original volume
@@ -1329,21 +1289,45 @@
             
             </returns>
         </member>
-        <member name="M:RegistrationOperations.performBsplineRegistration(BSplineDeformableRegistrationSettingsStructure)">
-             <summary>Performs a BSpline deformable registration between the two loaded volumes.    If
-            the current registration is a deformable, it will be restarted. If the current
-            registration is not a deformable, it will be converted into one by this process.  
+        <member name="M:RegistrationOperations.performBurnInStructureGuidedBsplineRegistrationDICOM(BSplineDeformableRegistrationSettingsStructure,IntList,DoubleList)">
+             <summary>Performs a Burn-in Structure-Guided BSpline deformable registration between the
+            two loaded volumes. If the current registration is a deformable object then it
+            will be restarted. If the current registration is not a deformable object then
+            it will be converted into one by this process.  
             Note, this function will restart a deformable object if such an object is
             currently loaded into memory. A value of 'true' is returned if successful.  
-            All coordinates and image values must be in Velocity's internal coordinate space
-            and units. Use RegistrationOperations::performBsplineRegistrationDICOM for DICOM
-            coordinates and original volume values.  
+            All coordinates and image values are in DICOM coordinates and original volume
+            units. Note, the following two lists must have the same length:
+            'burnInstructureIds' and 'burnInVoxelValues'.  
               
             
              </summary>
             
              <param name="settings">
             the deformable algorithm settings  
+            
+            </param>
+            
+            
+             <param name="burnInStructureIds">
+            the list of structure record Ids that are to be used in the Burn-in Structure-
+            
+            Guided DIR  
+            
+            </param>
+            
+            
+             <param name="burnInVoxelValues">
+            the list of values that are to be burned into the volumes (used in conjuction
+            
+            with  
+            
+            </param>
+            
+            
+             <param name="burnInStructureIds))">
+              
+            
             
             </param>
             <returns>
@@ -5583,9 +5567,9 @@
              </summary>
         </member>
         <member name="M:VelocityEngine.getCurrentPatient">
-             <summary>Returns the current patient, if one is loaded.    If no patient is loaded, the
-            returned object will have a velocity id of -1 and the engine's error message
-            will be set.  
+             <summary>Returns the current patient, if one is loaded.  
+            If no patient is loaded, the returned object will have a velocity id of -1 and
+            the engine's error message will be set.  
             
              </summary>
         </member>

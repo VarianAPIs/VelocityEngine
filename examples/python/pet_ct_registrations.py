@@ -46,27 +46,27 @@ orThrow(e.loadRegistration(registration.getVelocityId()))
 print('Running manual registration...')
 manualSettings = velocity.ManualRegistrationSettingsStructure()
 manualSettings.registrationMatrix = (
-	1.0, 0.0, 0.0, 0.0, 
-	0.0, 1.0, 0.0, 0.0, 
-	0.0, 0.0, 1.0, 0.0, 
-	-0.308194699, -0.38874362499, -0.583499961, 1.0)
-orThrow(regOps.performManualAlignment(manualSettings), regOps)
+  1.0, 0.0, 0.0, 0.0,
+  0.0, 1.0, 0.0, 0.0,
+  0.0, 0.0, 1.0, 0.0, 
+  -8.1947, -275.0845, -394.5001, 1.0)
+orThrow(regOps.performManualAlignmentDICOM(manualSettings), regOps)
 print('done.')
 
 # now run rigid registration
 print('Running rigid registration...')
 regSettings = velocity.RigidRegistrationSettingsStructure()
-regSettings.roiStart[0] = -0.102021;
-regSettings.roiStart[1] = -0.1362766;
-regSettings.roiStart[2] = -0.55900709;
-regSettings.roiEnd[0] = 0.100532;
-regSettings.roiEnd[1] = 0.19934;
-regSettings.roiEnd[2] = -0.254681;
+regSettings.roiStart[0] = -102.021;
+regSettings.roiStart[1] = -74.7234;
+regSettings.roiStart[2] = -5.49291;
+regSettings.roiEnd[0] = 100.532;
+regSettings.roiEnd[1] = -410.341;
+regSettings.roiEnd[2] = -309.819;
 
-regSettings.primaryStartLevel = 15084.0;
-regSettings.primaryEndLevel = 20035.0;
-regSettings.secondaryStartLevel = 16361.0;
-regSettings.secondaryEndLevel = 22731.0;
+regSettings.primaryStartLevel = -110.02;
+regSettings.primaryEndLevel = 189.974;
+regSettings.secondaryStartLevel =  -125.014;
+regSettings.secondaryEndLevel = 224.998;
 
 regSettings.preProcessingMethod = 0
 regSettings.performInitialAutoAlignment = True
@@ -76,22 +76,22 @@ regSettings.minimumStepLength = 0.0001
 regSettings.maximumStepLength = 17.0
 regSettings.samplesDenominator = 10
 regSettings.numberOfHistogramBins = 25
-orThrow(regOps.performRigidRegistration(regSettings), regOps)
+orThrow(regOps.performRigidRegistrationDICOM(regSettings), regOps)
 print('done.')
 
 print('Performing deformable registration...')
 bsplineSettings = velocity.BSplineDeformableRegistrationSettingsStructure()
-bsplineSettings.roiStart[0] = -0.102021
-bsplineSettings.roiStart[1] = -0.1362766
-bsplineSettings.roiStart[2] = -0.55900709
-bsplineSettings.roiEnd[0] = 0.100532
-bsplineSettings.roiEnd[1] = 0.19934
-bsplineSettings.roiEnd[2] = -0.254681
+bsplineSettings.roiStart[0] = -102.021
+bsplineSettings.roiStart[1] = -74.7234
+bsplineSettings.roiStart[2] = -5.49291
+bsplineSettings.roiEnd[0] = 100.532;
+bsplineSettings.roiEnd[1] = -410.341;
+bsplineSettings.roiEnd[2] = -309.819;
 
-bsplineSettings.primaryStartLevel = 15084.0
-bsplineSettings.primaryEndLevel = 20035.0
-bsplineSettings.secondaryStartLevel = 16361.0
-bsplineSettings.secondaryEndLevel = 22731.0
+bsplineSettings.primaryStartLevel = -110.02
+bsplineSettings.primaryEndLevel = 189.974
+bsplineSettings.secondaryStartLevel = -125.014
+bsplineSettings.secondaryEndLevel = 224.998
 
 bsplineSettings.preprocessingMethod = 0
 bsplineSettings.numberOfMultiResolutionLevels = 3 # so each vector setting should be length 3
@@ -111,7 +111,7 @@ bsplineSettings.gradientMagnitudeTolerance = velocity.DoubleList([0.000000000000
 bsplineSettings.gridCellSize = velocity.VectorR3dList(( velocity.VectorR3d(5.0), velocity.VectorR3d(10.0), velocity.VectorR3d(15.0) ))
 bsplineSettings.gridCellSizeType = velocity.CharList([ord('n')]*3)
 
-orThrow(regOps.performBsplineRegistration(bsplineSettings), regOps)
+orThrow(regOps.performBsplineRegistrationDICOM(bsplineSettings), regOps)
 print('done')
 
 # changes are just in memory, save changes to the database

@@ -60,12 +60,12 @@ orThrow(e.loadRegistration(registration.getVelocityId()))
 # now run rigid registration
 print('Running rigid registration...')
 regSettings = velocity.RigidRegistrationSettingsStructure()
-orThrow(regOps.performRigidRegistration(regSettings), regOps)
+orThrow(regOps.performRigidRegistrationDICOM(regSettings), regOps)
 print('done.')
 
 print('Performing deformable registration...')
 bsplineSettings = velocity.BSplineDeformableRegistrationSettingsStructure()
-orThrow(regOps.performBsplineRegistration(bsplineSettings), regOps)
+orThrow(regOps.performBsplineRegistrationDICOM(bsplineSettings), regOps)
 print('done')
 
 # changes are just in memory, save changes to the database

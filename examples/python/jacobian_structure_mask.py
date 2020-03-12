@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from __future__ import print_function
+
 import velocity
 import atexit
 import datetime
@@ -87,7 +87,7 @@ orThrow(volumetricData, vops)
 mask = velocity.StructureMask(volumetricData.size)
 
 print('Creating mask from threshold... ')
-for i in xrange(0,volumetricData.size[0]*volumetricData.size[1]*volumetricData.size[2]):
+for i in range(0,volumetricData.size[0]*volumetricData.size[1]*volumetricData.size[2]):
   isDense = volumetricData.data[i] >= thresholdValue
   isNonRigid = abs(math.log(abs(jacobian.data[i]))) >= 0.5
   

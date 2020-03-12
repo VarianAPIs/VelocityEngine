@@ -1,5 +1,9 @@
 # Changelog
 
+## [4.1.1.1184] - 2020-03-11
+### Changed
+- Build against released Velocity 4.1.1.
+
 ## [4.1.0.1145] - 2020-03-11
 ### Added
 - Python 3 support.

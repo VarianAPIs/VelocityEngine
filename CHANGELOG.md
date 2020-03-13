@@ -1,5 +1,9 @@
 # Changelog
 
+## [4.1.2.1194] - 2020-03-12
+### Changed
+- Build against released Velocity 4.1.2.
+
 ## [4.1.1.1184] - 2020-03-11
 ### Changed
 - Build against released Velocity 4.1.1.

@@ -1,5 +1,9 @@
 # Changelog
 
+## [4.1.2.1197] - 2020-06-10
+### Changed
+- Fixed missing dependency DLL for C#.
+
 ## [4.1.2.1194] - 2020-03-12
 ### Changed
 - Build against released Velocity 4.1.2.

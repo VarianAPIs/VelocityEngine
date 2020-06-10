@@ -1,5 +1,9 @@
 # Changelog
 
+## [4.1.0.1146] - 2020-06-10
+### Changed
+- Fix missing dependency DLL for C#.
+
 ## [4.1.0.1145] - 2020-03-11
 ### Added
 - Python 3 support.

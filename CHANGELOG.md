@@ -1,5 +1,19 @@
 # Changelog
 
+## [4.1.2.1199] - 2020-10-09
+
+### Added
+- Adaptive plan creation.
+- Chain registration loading.
+- Default Settings for rigid and deformable registrations.
+ 
+### Changed
+- BED functions, examples, and documentation updated.
+- Fix Issue #8 - structure mask for secondary structure.
+- Fix Issue #7 - hang on script exit for Windows.
+- C# example fixes.
+- Python guide updates.
+
 ## [4.1.2.1197] - 2020-06-10
 ### Changed
 - Fixed missing dependency DLL for C#.

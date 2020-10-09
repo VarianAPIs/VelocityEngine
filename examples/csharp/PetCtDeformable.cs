@@ -40,11 +40,11 @@ namespace Velocity.Examples {
             orThrow(engine.loginToWorkstation(USER, PASS, WORKSTATION_PATH, true));
             AppDomain.CurrentDomain.ProcessExit += (source, data) => { engine.logout(); };
 
-            orThrow(engine.loadPatientByPatientId(PATIENT_ID));
+            ValidOrThrow(engine.loadPatientByPatientId(PATIENT_ID), engine);
             Console.WriteLine("Loaded patient: {0}", PATIENT_ID);
-            orThrow(engine.loadPrimaryVolumeByUID(PRIMARY_UID));
+            ValidOrThrow(engine.loadPrimaryVolumeByUID(PRIMARY_UID), engine);
             Console.WriteLine("Loaded primary volume: {0}", PRIMARY_UID);
-            orThrow(engine.loadSecondaryVolumeByUID(SECONDARY_UID));
+            ValidOrThrow(engine.loadSecondaryVolumeByUID(SECONDARY_UID), engine);
             Console.WriteLine("Loaded secondary volume: {0}", SECONDARY_UID);
 
             // create registration
@@ -62,17 +62,17 @@ namespace Velocity.Examples {
             Console.WriteLine("Running rigid registration ...");
             var rigidSettings = new RigidRegistrationSettingsStructure();
 
-            regSettings.roiStart[0] = -102.021;
-            regSettings.roiStart[1] = -74.7234;
-            regSettings.roiStart[2] = -5.49291;
-            regSettings.roiEnd[0] = 100.532;
-            regSettings.roiEnd[1] = -410.341;
-            regSettings.roiEnd[2] = -309.819;
+            rigidSettings.roiStart[0] = -102.021;
+            rigidSettings.roiStart[1] = -74.7234;
+            rigidSettings.roiStart[2] = -5.49291;
+            rigidSettings.roiEnd[0] = 100.532;
+            rigidSettings.roiEnd[1] = -410.341;
+            rigidSettings.roiEnd[2] = -309.819;
 
-            regSettings.primaryStartLevel = -110.02;
-            regSettings.primaryEndLevel = 189.974;
-            regSettings.secondaryStartLevel =  -125.014;
-            regSettings.secondaryEndLevel = 224.998;
+            rigidSettings.primaryStartLevel = -110.02;
+            rigidSettings.primaryEndLevel = 189.974;
+            rigidSettings.secondaryStartLevel =  -125.014;
+            rigidSettings.secondaryEndLevel = 224.998;
 
             rigidSettings.preprocessingMethod = PreprocessingFilterMethod.NoFilter;
             rigidSettings.performInitialAutoAlignment = true;
@@ -91,17 +91,17 @@ namespace Velocity.Examples {
             // perform a deformable registration in the same area
             Console.WriteLine("Performing deformable registration...");
             var bsplineSettings = new BSplineDeformableRegistrationSettingsStructure();
-            bsplineSettings.roiStart[0] = -102.021
-            bsplineSettings.roiStart[1] = -74.7234
-            bsplineSettings.roiStart[2] = -5.49291
+            bsplineSettings.roiStart[0] = -102.021;
+            bsplineSettings.roiStart[1] = -74.7234;
+            bsplineSettings.roiStart[2] = -5.49291;
             bsplineSettings.roiEnd[0] = 100.532;
             bsplineSettings.roiEnd[1] = -410.341;
             bsplineSettings.roiEnd[2] = -309.819;
 
-            bsplineSettings.primaryStartLevel = -110.02
-            bsplineSettings.primaryEndLevel = 189.974
-            bsplineSettings.secondaryStartLevel = -125.014
-            bsplineSettings.secondaryEndLevel = 224.998
+            bsplineSettings.primaryStartLevel = -110.02;
+            bsplineSettings.primaryEndLevel = 189.974;
+            bsplineSettings.secondaryStartLevel = -125.014;
+            bsplineSettings.secondaryEndLevel = 224.998;
 
             bsplineSettings.preprocessingMethod = PreprocessingFilterMethod.NoFilter;
             bsplineSettings.numberOfMultiResolutionLevels = 3; //  # so each List setting should be length 3

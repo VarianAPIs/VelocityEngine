@@ -42,11 +42,11 @@ namespace Velocity.Examples
             orThrow(engine.loginToWorkstation(USER, PASS, WORKSTATION_PATH, true));
             AppDomain.CurrentDomain.ProcessExit += (source, data) => { engine.logout(); };
 
-            orThrow(engine.loadPatientByPatientId(PATIENT_ID));
+            ValidOrThrow(engine.loadPatientByPatientId(PATIENT_ID), engine);
             Console.WriteLine("Loaded patient: {0}", PATIENT_ID);
-            orThrow(engine.loadPrimaryVolumeByUID(PRIMARY_UID));
+            ValidOrThrow(engine.loadPrimaryVolumeByUID(PRIMARY_UID), engine);
             Console.WriteLine("Loaded primary volume: {0}", PRIMARY_UID);
-            orThrow(engine.loadSecondaryVolumeByUID(SECONDARY_UID));
+            ValidOrThrow(engine.loadSecondaryVolumeByUID(SECONDARY_UID), engine);
             Console.WriteLine("Loaded secondary volume: {0}", SECONDARY_UID);
             ValidOrThrow(engine.loadRegistrationByName(DEFORMABLE_NAME), engine);
             Console.WriteLine("Loaded registration: {0}", DEFORMABLE_NAME);

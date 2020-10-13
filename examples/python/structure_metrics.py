@@ -1,4 +1,4 @@
-from __future__ import print_function
+
 import velocity
 import sys
 import atexit
@@ -63,7 +63,7 @@ newStructures = sops.copyStructuresToSecondary([structure.getVelocityId()], targ
 targetSet = sops.saveStructureSet(targetSet.getVelocityId())
 
 orThrow(len(newStructures) == 1, sops)
-newStructureId = iter(newStructures).next()
+newStructureId = next(iter(newStructures))
 newStructure = newStructures[newStructureId]
 print('Structure copied to secondary, computing metrics...')
 

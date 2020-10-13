@@ -16,6 +16,6 @@ clinical use on humans. It requires a non-clinical system. VelocityEngine checks
 at login to verify the system is a non-clinical database.
 
 ## License 
-Copyright 2018 Varian Medical Systems, inc. Use of the VelocityEngine
+Copyright 2020 Varian Medical Systems, inc. Use of the VelocityEngine
 is governed by existing license of Velocity software. No additional warranties
 are provided. Use at your own risk.

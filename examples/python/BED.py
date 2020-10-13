@@ -1,4 +1,4 @@
-from __future__ import with_statement, print_function
+
 import velocity
 import atexit
 
@@ -47,10 +47,18 @@ structure = e.loadStructureByName(STRUCT_1, STRUCTSET_1UID)
 orThrow(structure)
 print('Loaded existing structure: {}'.format(STRUCT_1))
 
-structNames = velocity.StringList([STRUCT_1])
-structAlphaBetaRatio = velocity.DoubleList([2, DEFAULT_ALPHABETA_TISSUE])
-structUIDs = velocity.StringList([structure.getInstanceUID()])
+bedStructure = velocity.BedStructureVariables()
+bedStructure.structureId = structure.getVelocityId()
+bedStructure.alphaBetaRatio = 2
+bedStructure.structureName = structure.getName()
+
+calculationData = velocity.BedDoseCalculationData()
+calculationData.bedVariablesByStructure = velocity.BedStructureVariablesList([bedStructure])
+calculationData.fractions = 25
+
+backgroundData = velocity.BedBackgroundData()
+backgroundData.alphaBetaRatio = DEFAULT_ALPHABETA_TISSUE
 
 vo = e.getVolumeOperations()
-orThrow(vo.createBEDoseByStructureUIDs(25, structNames, structUIDs, structAlphaBetaRatio) != -1, vo)
+orThrow(vo.createBEDose(calculationData, backgroundData, False) != -1, vo)
 print ('Biological Effective Dose created')

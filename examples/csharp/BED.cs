@@ -44,11 +44,11 @@ namespace Velocity.Examples
             orThrow(engine.loginToWorkstation(USER, PASS, WORKSTATION_PATH, true));
             AppDomain.CurrentDomain.ProcessExit += (source, data) => { engine.logout(); };
 
-            orThrow(engine.loadPatientByPatientId(PATIENT_ID));
+            ValidOrThrow(engine.loadPatientByPatientId(PATIENT_ID), engine);
             Console.WriteLine("Loaded patient: {0}", PATIENT_ID);
-            orThrow(engine.loadPrimaryVolumeByUID(PRIMARY_UID));
+            ValidOrThrow(engine.loadPrimaryVolumeByUID(PRIMARY_UID), engine);
             Console.WriteLine("Loaded primary volume: {0}", PRIMARY_UID);
-            orThrow(engine.loadSecondaryVolumeByUID(SECONDARY_UID));
+            ValidOrThrow(engine.loadSecondaryVolumeByUID(SECONDARY_UID), engine);
             Console.WriteLine("Loaded secondary volume: {0}", SECONDARY_UID);
 
             // load registration
@@ -59,12 +59,20 @@ namespace Velocity.Examples
             ValidOrThrow(structure, engine);
             Console.WriteLine("Loading existing structure: {0}", STRUCT_1);
 
-            var structNames = new StringList(new string[] { STRUCT_1 });
-            var structAlphaBetaRatio = new DoubleList(new double[] { 2, DEFAULT_ALPHABETA_TISSUE });
-            var structUIDs = new StringList(new string[] { structure.getInstanceUID() });
+            var bedStructure = new BedStructureVariables();
+            bedStructure.structureId = structure.getVelocityId();
+            bedStructure.alphaBetaRatio = 2;
+            bedStructure.structureName = structure.getName();
+
+            var calculationData = new BedDoseCalculationData();
+            calculationData.bedVariablesByStructure = new BedStructureVariablesList(new BedStructureVariables[] {bedStructure});
+            calculationData.fractions = 25;
+
+            var backgroundData =  new BedBackgroundData();
+            backgroundData.alphaBetaRatio = DEFAULT_ALPHABETA_TISSUE;
 
             var vo = engine.getVolumeOperations();
-            OrThrow(vo.createBEDoseByStructureUIDs(25, structNames, structUIDs, structAlphaBetaRatio) != -1, vo);
+            OrThrow(vo.createBEDose(calculationData,backgroundData, false ) != -1, vo);
             Console.WriteLine("Biological Effective Dose created");
         }
     }

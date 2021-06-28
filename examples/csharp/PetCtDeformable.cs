@@ -85,7 +85,7 @@ namespace Velocity.Examples {
             rigidSettings.samplesDenominator = 10;
             rigidSettings.numberOfHistogramBins = 25;
 
-            orThrow(regOps.performRigidRegistrationDICOM(rigidSettings));
+            OrThrow(regOps.performRigidRegistrationDICOM(rigidSettings), regOps);
             Console.WriteLine("done");
 
             // perform a deformable registration in the same area
@@ -121,7 +121,7 @@ namespace Velocity.Examples {
             bsplineSettings.gridCellSize = new VectorR3dList(new VectorR3d[] { new VectorR3d(5.0), new VectorR3d(10.0), new VectorR3d(15.0) });
             bsplineSettings.gridCellSizeType = new CharList(new char[] { 'n', 'n', 'n' });
 
-            orThrow(regOps.performBsplineRegistrationDICOM(bsplineSettings));
+            OrThrow(regOps.performBsplineRegistrationDICOM(bsplineSettings), regOps);
             Console.WriteLine("done");
 
             // save the changes

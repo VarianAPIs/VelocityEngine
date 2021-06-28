@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.1.4.1216] - 2021-06-02
+### Added
+- Dose summation example script.
+
+### Changed
+- Build against released Velocity 4.1.4.
+
 ## [4.1.2.1199] - 2020-10-09
 
 ### Added

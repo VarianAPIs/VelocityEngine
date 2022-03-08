@@ -1,5 +1,23 @@
 # Changelog
 
+## [4.1.4.1217] - 2022-03-08
+### Added
+PlanOperations: 
+- Container plan creation.
+
+StructureOperations: 
+- Structure delete.
+- Structure set creation with External contour.
+
+PatientDataOperations
+- Delete volumes, registrations, structure sets, plans.
+
+### Changed
+- Fix Issue #15 - crop and smooth parameter documentation.
+- Fix Issue #19 - enforce volume match for load registration.
+- ROI box fix - don't require a particular order for the corner points.
+- Mac build for Python 3.9.
+
 ## [4.1.4.1216] - 2021-06-02
 ### Added
 - Dose summation example script.
